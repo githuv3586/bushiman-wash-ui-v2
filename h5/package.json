@@ -1,0 +1,19 @@
+{
+  "name": "bushiman-wash-h5",
+  "version": "2.0.0",
+  "private": true,
+  "description": "布仕曼洗护 H5 版：单文件离线成品，构建产物在 dist/",
+  "scripts": {
+    "build": "bun build src/offline-h5-entry.tsx --target=browser --production --outdir /tmp/offline-h5 && python3 scripts/build_offline_h5.py",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/services/services",
+    "pages/service-detail/service-detail",
+    "pages/booking/booking",
+    "pages/order-list/order-list",
+    "pages/order-detail/order-detail",
+    "pages/gear/gear",
+    "pages/gear-edit/gear-edit",
+    "pages/articles/articles",
+    "pages/article-detail/article-detail",
+    "pages/membership/membership",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "布仕曼洗护",
+    "backgroundColor": "#EFEDE6",
+    "backgroundColorTop": "#EFEDE6",
+    "backgroundColorBottom": "#EFEDE6",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#8E9893",
+    "selectedColor": "#1B4235",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "首页", "iconPath": "images/tab-home-inactive.png", "selectedIconPath": "images/tab-home.png" },
+      { "pagePath": "pages/order-list/order-list", "text": "订单", "iconPath": "images/tab-order-inactive.png", "selectedIconPath": "images/tab-order.png" },
+      { "pagePath": "pages/gear/gear", "text": "装备档案", "iconPath": "images/tab-gear-inactive.png", "selectedIconPath": "images/tab-gear.png" },
+      { "pagePath": "pages/profile/profile", "text": "我的", "iconPath": "images/tab-profile-inactive.png", "selectedIconPath": "images/tab-profile.png" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

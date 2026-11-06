@@ -1,0 +1,48 @@
+<view class="page">
+
+  <view class="intro">
+    <view class="intro__title">养护手册</view>
+    <view class="intro__desc">洗护前花三分钟，装备能多穿三年</view>
+  </view>
+
+  <!-- 头条 -->
+  <view class="featured" wx:if="{{featured}}" data-id="{{featured.id}}" bindtap="go" hover-class="featured--press">
+    <view class="featured__cover {{featured.tex}}">
+      <text class="featured__no t-num">{{featured.no}}</text>
+      <text class="featured__badge">编辑推荐</text>
+    </view>
+    <view class="featured__body">
+      <view class="featured__title">{{featured.title}}</view>
+      <view class="featured__sum clamp-2">{{featured.summary}}</view>
+      <view class="featured__meta">
+        <text>阅读约 {{featured.read}} 分钟</text>
+        <view class="featured__more">
+          <text>阅读</text>
+          <image class="ico ico--xs featured__more-ico" src="{{icons.CHEV_RIGHT_GRAY}}" mode="aspectFit" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 列表 -->
+  <view class="card-stack" wx:if="{{list.length}}">
+    <view class="item" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="go" hover-class="item--press">
+      <view class="item__thumb {{item.tex}}">
+        <text class="item__no t-num">{{item.no}}</text>
+      </view>
+      <view class="item__body">
+        <view class="item__title clamp-2">{{item.title}}</view>
+        <view class="item__meta">阅读约 {{item.read}} 分钟</view>
+      </view>
+      <image class="ico ico--sm item__arrow" src="{{icons.CHEV_RIGHT_GRAY}}" mode="aspectFit" />
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{!loading && !featured}}">
+    <image class="empty__art" src="{{icons.EMPTY_ARTICLE}}" mode="aspectFit" />
+    <view class="empty__title">暂无内容</view>
+    <view class="empty__desc">工坊正在整理养护手册，稍后再来看看</view>
+  </view>
+
+  <view class="pad-bottom"></view>
+</view>

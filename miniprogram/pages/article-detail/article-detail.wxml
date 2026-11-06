@@ -1,0 +1,41 @@
+<view class="page" wx:if="{{article}}">
+
+  <view class="article">
+    <view class="article__kicker">
+      <view class="rule-brass"></view>
+      <text class="article__kicker-text">GEAR CARE NOTES</text>
+    </view>
+    <view class="article__title">{{article.title}}</view>
+    <view class="article__meta">
+      <text>{{article.summary}}</text>
+    </view>
+
+    <view class="article__hr"></view>
+
+    <view class="para" wx:for="{{paras}}" wx:key="no">
+      <view class="para__idx t-num">{{item.no}}</view>
+      <view class="para__text">{{item.text}}</view>
+    </view>
+
+    <view class="article__end">
+      <view class="rule-brass"></view>
+      <text class="article__end-text">END</text>
+      <view class="rule-brass"></view>
+    </view>
+  </view>
+
+  <!-- 相关服务：内容即入口 -->
+  <view class="cta" wx:if="{{svc}}" bindtap="goSvc" hover-class="cta--press">
+    <view class="cta__main">
+      <view class="cta__kicker">RELATED SERVICE</view>
+      <view class="cta__name">{{svc.name}}</view>
+      <view class="cta__meta">¥{{svc.price}}/{{svc.unit}} · 工期 {{svc.duration}}</view>
+    </view>
+    <view class="cta__btn">
+      <text>去预约</text>
+      <image class="ico ico--xs cta__btn-ico" src="{{icons.CHEV_RIGHT_WHITE}}" mode="aspectFit" />
+    </view>
+  </view>
+
+  <view class="pad-bottom"></view>
+</view>

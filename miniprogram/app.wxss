@@ -1,0 +1,417 @@
+/* ==========================================================================
+   app.wxss —— 布仕曼洗护 · 设计系统
+   方向：工坊手册（Atelier Manual）
+   —— 深林绿为底，纸感中性为面，黄铜细线为饰；工程线稿 + 面料纹理承担质感。
+   规则：页面样式只允许引用本文件的令牌与组件类，禁止裸色值与随手圆角。
+   ========================================================================== */
+
+page {
+  /* —— 品牌绿（主色） —— */
+  --green-900: #0C211A;
+  --green-800: #123026;
+  --green-700: #1B4235;
+  --green-600: #265444;
+  --green-500: #356B57;
+  --green-400: #5C8B78;
+  --green-300: #8FB0A2;
+  --green-200: #C3D6CD;
+  --green-100: #E2ECE7;
+  --green-50: #F1F6F3;
+
+  /* —— 黄铜（强调，面积 ≤10%） —— */
+  --brass-700: #7E5A28;
+  --brass-600: #9C7335;
+  --brass-500: #B98F4E;
+  --brass-400: #CFA96D;
+  --brass-300: #E0C79B;
+  --brass-200: #EFDFC4;
+  --brass-100: #F7EEDD;
+  --brass-50: #FBF6EC;
+
+  /* —— 中性（墨/纸/线） —— */
+  --ink-900: #161D1A;
+  --ink-800: #222C28;
+  --ink-700: #37433E;
+  --ink-600: #4A5651;
+  --ink-500: #5D6964;
+  --ink-400: #75807A;
+  --ink-300: #B3BBB7;
+  --ink-200: #D3D8D5;
+
+  --paper: #FFFFFF;
+  --paper-2: #FAF9F6;
+  --paper-3: #F3F1EA;
+  --canvas: #EFEDE6;
+  --line: #E5E1D6;
+  --line-soft: #F0EDE5;
+
+  /* —— 语义 —— */
+  --ok: #2E7D5B;
+  --warn: #B4761F;
+  --info: #2F6E86;
+  --danger: #A8442E;
+
+  /* —— 字阶 —— */
+  --fs-display: 60rpx;
+  --fs-h1: 44rpx;
+  --fs-h2: 36rpx;
+  --fs-h3: 32rpx;
+  --fs-body: 28rpx;
+  --fs-sm: 26rpx;
+  --fs-cap: 24rpx;
+  --fs-micro: 22rpx;
+
+  /* —— 圆角 —— */
+  --r-xs: 8rpx;
+  --r-sm: 12rpx;
+  --r-md: 20rpx;
+  --r-lg: 28rpx;
+  --r-xl: 40rpx;
+  --r-full: 999rpx;
+
+  /* —— 阴影 —— */
+  --sh-1: 0 1rpx 2rpx rgba(12, 33, 26, 0.04), 0 2rpx 8rpx rgba(12, 33, 26, 0.04);
+  --sh-2: 0 4rpx 12rpx rgba(12, 33, 26, 0.06), 0 12rpx 32rpx rgba(12, 33, 26, 0.06);
+  --sh-3: 0 8rpx 24rpx rgba(12, 33, 26, 0.08), 0 24rpx 60rpx rgba(12, 33, 26, 0.1);
+
+  /* —— 版心 —— */
+  --gutter: 32rpx;
+
+  background: var(--canvas);
+  color: var(--ink-800);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+view, text, image, button, input, textarea, scroll-view, picker {
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   1. 排版
+   ========================================================================== */
+
+.t-display {
+  font-size: var(--fs-display);
+  line-height: 1.16;
+  font-weight: 700;
+  letter-spacing: -1rpx;
+  color: var(--ink-900);
+}
+.t-h1 { font-size: var(--fs-h1); line-height: 1.3; font-weight: 700; letter-spacing: -0.5rpx; color: var(--ink-900); }
+.t-h2 { font-size: var(--fs-h2); line-height: 1.36; font-weight: 700; color: var(--ink-900); }
+.t-h3 { font-size: var(--fs-h3); line-height: 1.42; font-weight: 600; color: var(--ink-900); }
+.t-body { font-size: var(--fs-body); line-height: 1.65; color: var(--ink-700); }
+.t-sm { font-size: var(--fs-sm); line-height: 1.6; color: var(--ink-600); }
+.t-cap { font-size: var(--fs-cap); line-height: 1.55; color: var(--ink-500); }
+.t-micro { font-size: var(--fs-micro); line-height: 1.5; color: var(--ink-500); }
+.t-mute { color: var(--ink-500); }
+.t-ink { color: var(--ink-900); }
+.t-brand { color: var(--green-700); }
+.t-brass { color: var(--brass-600); }
+.t-num { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum'; }
+
+/* 小标签：工坊手册里的规格标签 */
+.t-caps {
+  font-size: var(--fs-micro);
+  letter-spacing: 3rpx;
+  font-weight: 600;
+  color: var(--ink-400);
+}
+
+/* 价格排版：货币符号降一级，数字用表格数字 */
+.price { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum'; color: var(--ink-900); font-weight: 700; }
+.price .cur { font-size: 0.62em; font-weight: 600; margin-right: 2rpx; }
+.price .unit { font-size: 0.44em; font-weight: 500; color: var(--ink-500); margin-left: 4rpx; }
+.price--lg { font-size: 56rpx; line-height: 1.1; }
+.price--md { font-size: 40rpx; line-height: 1.2; }
+.price--sm { font-size: 32rpx; line-height: 1.2; }
+.price--brass { color: var(--brass-700); }
+
+/* ==========================================================================
+   2. 布局
+   ========================================================================== */
+
+.page { min-height: 100vh; background: var(--canvas); }
+.gutter { padding-left: var(--gutter); padding-right: var(--gutter); }
+.mt-8 { margin-top: 8rpx; } .mt-12 { margin-top: 12rpx; } .mt-16 { margin-top: 16rpx; }
+.mt-20 { margin-top: 20rpx; } .mt-24 { margin-top: 24rpx; } .mt-32 { margin-top: 32rpx; }
+.mt-40 { margin-top: 40rpx; }
+.row { display: flex; align-items: center; }
+.row--between { display: flex; align-items: center; justify-content: space-between; }
+.row--top { display: flex; align-items: flex-start; }
+.flex-1 { flex: 1; min-width: 0; }
+.ellipsis { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.clamp-2 {
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.pad-tabbar { height: calc(120rpx + env(safe-area-inset-bottom)); }
+.pad-bottom { height: 48rpx; }
+
+/* ==========================================================================
+   3. 区块
+   ========================================================================== */
+
+.section { margin-top: 44rpx; }
+.section__hd {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 0 var(--gutter); margin-bottom: 20rpx;
+}
+.section__title {
+  font-size: var(--fs-h2); font-weight: 700; color: var(--ink-900);
+  letter-spacing: -0.5rpx;
+}
+.section__sub { font-size: var(--fs-micro); color: var(--ink-400); margin-left: 12rpx; letter-spacing: 1rpx; }
+.section__more { font-size: var(--fs-cap); color: var(--ink-500); display: flex; align-items: center; }
+.section__more-ico { width: 22rpx; height: 22rpx; margin-left: 4rpx; }
+
+/* 图标尺寸工具类：所有 <image> 图标必须显式定尺寸，避免按位图原始尺寸撑开 */
+.ico { width: 32rpx; height: 32rpx; flex-shrink: 0; }
+.ico--xs { width: 22rpx; height: 22rpx; }
+.ico--sm { width: 26rpx; height: 26rpx; }
+.ico--md { width: 38rpx; height: 38rpx; }
+.ico--lg { width: 46rpx; height: 46rpx; }
+
+/* 黄铜细线：本设计系统的签名细节 */
+.rule-brass {
+  height: 1rpx; width: 48rpx; background: var(--brass-400);
+}
+.rule-brass--full { width: 100%; background: linear-gradient(90deg, var(--brass-400), rgba(207, 169, 109, 0)); }
+
+.hr { height: 1rpx; background: var(--line); }
+.hr--inset { margin-left: var(--gutter); margin-right: var(--gutter); }
+
+/* ==========================================================================
+   4. 卡片
+   ========================================================================== */
+
+.card {
+  background: var(--paper);
+  border-radius: var(--r-lg);
+  padding: 32rpx;
+  box-shadow: var(--sh-1);
+}
+.card--flat { box-shadow: none; border: 1rpx solid var(--line); }
+.card--paper { background: var(--paper-2); }
+.card--brass { background: var(--brass-50); box-shadow: none; border: 1rpx solid var(--brass-200); }
+.card--ink { background: var(--green-800); color: var(--paper); box-shadow: var(--sh-2); }
+
+.card-stack { margin: 0 var(--gutter); }
+.card-stack > view + view { margin-top: 20rpx; }
+
+/* 纹理：防撕裂格纹，用于深色块增加质感 */
+.tex-ripstop {
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.045) 0 1rpx, transparent 1rpx 28rpx),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.045) 0 1rpx, transparent 1rpx 28rpx);
+}
+/* 纹理：纸纹，用于浅色块 */
+.tex-paper {
+  background-image: repeating-linear-gradient(45deg, rgba(22, 29, 26, 0.016) 0 1rpx, transparent 1rpx 6rpx);
+}
+
+/* ==========================================================================
+   5. 按钮
+   ========================================================================== */
+
+.btn {
+  display: flex; align-items: center; justify-content: center;
+  height: 92rpx; padding: 0 40rpx;
+  border-radius: var(--r-full);
+  font-size: 30rpx; font-weight: 600; letter-spacing: 1rpx;
+  transition: transform 120ms ease, opacity 120ms ease, background-color 120ms ease;
+}
+.btn--primary { background: var(--green-700); color: var(--paper); box-shadow: 0 6rpx 18rpx rgba(27, 66, 53, 0.22); }
+.btn--brass { background: var(--brass-700); color: var(--paper); box-shadow: 0 6rpx 18rpx rgba(126, 90, 40, 0.26); }
+.btn--ghost { background: transparent; color: var(--green-700); border: 1rpx solid var(--green-700); }
+.btn--plain { background: var(--paper); color: var(--ink-800); border: 1rpx solid var(--line); }
+.btn--sm { height: 64rpx; padding: 0 28rpx; font-size: var(--fs-cap); }
+.btn--block { width: 100%; }
+.btn[disabled], .btn.is-disabled { opacity: 0.42; box-shadow: none; }
+.btn--press { transform: scale(0.985); opacity: 0.9; }
+.btn--loading { opacity: 0.7; }
+
+/* 图标按钮 */
+.icon-btn {
+  width: 64rpx; height: 64rpx; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.icon-btn image { width: 34rpx; height: 34rpx; }
+
+/* ==========================================================================
+   6. 标签 / 胶囊 / 徽标
+   ========================================================================== */
+
+.chip {
+  display: inline-flex; align-items: center;
+  height: 56rpx; padding: 0 22rpx;
+  border-radius: var(--r-full);
+  background: var(--paper-3); color: var(--ink-600);
+  font-size: var(--fs-cap); white-space: nowrap;
+  border: 1rpx solid transparent;
+  transition: all 140ms ease;
+}
+.chip--on {
+  background: var(--green-700); color: var(--paper);
+  border-color: var(--green-700); font-weight: 600;
+}
+.chip--brass { background: var(--brass-100); color: var(--brass-700); }
+.chip--line { background: transparent; border-color: var(--line); color: var(--ink-600); }
+
+.tag {
+  display: inline-flex; align-items: center;
+  height: 40rpx; padding: 0 14rpx;
+  border-radius: var(--r-xs);
+  background: var(--green-50); color: var(--green-600);
+  font-size: var(--fs-micro); letter-spacing: 0.5rpx;
+}
+.tag--brass { background: var(--brass-50); color: var(--brass-700); }
+.tag--line { background: transparent; border: 1rpx solid var(--line); color: var(--ink-500); }
+
+.badge-hot {
+  display: inline-flex; align-items: center; height: 36rpx; padding: 0 10rpx;
+  background: var(--brass-500); color: #fff;
+  font-size: 20rpx; font-weight: 600; letter-spacing: 1rpx;
+  border-radius: 6rpx;
+}
+
+/* 状态胶囊：六态订单 */
+.status {
+  display: inline-flex; align-items: center;
+  height: 44rpx; padding: 0 16rpx;
+  border-radius: var(--r-full);
+  font-size: var(--fs-micro); font-weight: 600; letter-spacing: 0.5rpx;
+}
+.status .dot { width: 10rpx; height: 10rpx; border-radius: 50%; background: currentColor; margin-right: 8rpx; }
+.status--pay { background: rgba(180, 118, 31, 0.1); color: var(--warn); }
+.status--accepted { background: rgba(47, 110, 134, 0.1); color: var(--info); }
+.status--washing { background: rgba(27, 66, 53, 0.09); color: var(--green-700); }
+.status--qc { background: rgba(126, 90, 40, 0.1); color: var(--brass-700); }
+.status--deliver { background: rgba(53, 107, 87, 0.1); color: var(--green-500); }
+.status--done { background: var(--paper-3); color: var(--ink-500); }
+
+/* 工坊印记：质检章 */
+.stamp {
+  display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 8rpx 14rpx;
+  border: 1rpx dashed var(--brass-400);
+  border-radius: var(--r-xs);
+  color: var(--brass-700);
+  font-size: 20rpx; letter-spacing: 2rpx; line-height: 1.4;
+  transform: rotate(-4deg);
+}
+
+/* ==========================================================================
+   7. 单元格 / 列表
+   ========================================================================== */
+
+.cell {
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 108rpx; padding: 24rpx 0;
+  font-size: var(--fs-body); color: var(--ink-800);
+  border-bottom: 1rpx solid var(--line-soft);
+}
+.cell:last-child { border-bottom: none; }
+.cell__label { display: flex; align-items: center; }
+.cell__value { color: var(--ink-500); font-size: var(--fs-sm); display: flex; align-items: center; }
+.cell__arrow { width: 26rpx; height: 26rpx; margin-left: 8rpx; opacity: 0.55; }
+
+.kv { display: flex; align-items: flex-start; padding: 14rpx 0; font-size: var(--fs-sm); }
+.kv__k { width: 150rpx; flex-shrink: 0; color: var(--ink-500); }
+.kv__v { flex: 1; color: var(--ink-800); }
+
+/* ==========================================================================
+   8. 骨架屏 / 空态
+   ========================================================================== */
+
+.sk {
+  background: linear-gradient(90deg, var(--paper-3) 0%, #F8F6F0 40%, var(--paper-3) 80%);
+  background-size: 300% 100%;
+  animation: sk-shine 1.4s ease-in-out infinite;
+  border-radius: var(--r-xs);
+}
+@keyframes sk-shine {
+  0% { background-position: 100% 0; }
+  100% { background-position: -50% 0; }
+}
+
+.empty {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 96rpx 48rpx 72rpx;
+}
+.empty__art { width: 200rpx; height: 200rpx; opacity: 0.9; }
+.empty__title { margin-top: 24rpx; font-size: var(--fs-body); font-weight: 600; color: var(--ink-700); }
+.empty__desc { margin-top: 8rpx; font-size: var(--fs-cap); color: var(--ink-400); text-align: center; line-height: 1.6; }
+.empty__btn { margin-top: 32rpx; }
+
+/* ==========================================================================
+   9. 吸底栏
+   ========================================================================== */
+
+.bar-fixed {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+  background: rgba(255, 255, 255, 0.96);
+  border-top: 1rpx solid var(--line);
+  padding: 16rpx var(--gutter) calc(16rpx + env(safe-area-inset-bottom));
+  display: flex; align-items: center;
+  box-shadow: 0 -6rpx 24rpx rgba(12, 33, 26, 0.05);
+}
+
+/* ==========================================================================
+   10. 动画
+   ========================================================================== */
+
+.fade-up { animation: fade-up 420ms cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16rpx); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.d1 { animation-delay: 60ms; }
+.d2 { animation-delay: 120ms; }
+.d3 { animation-delay: 180ms; }
+
+/* ==========================================================================
+   11. 面料纹理（工坊手册的质感来源，全站共用）
+   ========================================================================== */
+
+.tex-bead {
+  background-color: #265444;
+  background-image:
+    radial-gradient(circle at 50% 50%,
+      rgba(255, 255, 255, 0.30) 0 4rpx,
+      rgba(255, 255, 255, 0.10) 5rpx 8rpx,
+      transparent 9rpx),
+    radial-gradient(circle at 50% 50%,
+      rgba(255, 255, 255, 0.18) 0 3rpx,
+      rgba(255, 255, 255, 0.06) 4rpx 6rpx,
+      transparent 7rpx);
+  background-size: 96rpx 96rpx, 62rpx 62rpx;
+  background-position: 0 0, 24rpx 30rpx;
+}
+.tex-stitch {
+  background-color: #F7EEDD;
+  background-image: repeating-linear-gradient(135deg, #E0C79B 0 6rpx, transparent 6rpx 16rpx);
+}
+.tex-rain {
+  background-color: #1B4235;
+  background-image:
+    repeating-linear-gradient(74deg, rgba(255, 255, 255, 0.1) 0 2rpx, transparent 2rpx 20rpx),
+    repeating-linear-gradient(74deg, rgba(255, 255, 255, 0.05) 0 2rpx, transparent 2rpx 34rpx);
+}
+.tex-grid {
+  background-color: #123026;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.07) 0 1rpx, transparent 1rpx 26rpx),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.07) 0 1rpx, transparent 1rpx 26rpx);
+}
+
+/* 尊重系统的「减少动态效果」设置：动效是锦上添花，不能成为障碍 */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up,
+  .sk {
+    animation: none !important;
+  }
+}
